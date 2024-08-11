@@ -416,7 +416,6 @@
             <div class="fixed inset-0 transition-opacity" aria-hidden="true">
               <div class="absolute inset-0 bg-gray-500 dark:bg-black opacity-75 dark:opacity-50"></div>
             </div>
-
             <!-- This element is to trick the browser into centering the modal contents. -->
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
             <!--
@@ -446,18 +445,22 @@
                     <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-neutral-200" id="modal-headline">
                       {{$t("newClient")}}
                     </h3>
-                    <div class="mt-2">
+                    <div class="mt-2 ">
                       <p class="text-sm text-gray-500">
                         <input
                           class="rounded p-2 border-2 dark:bg-neutral-700 dark:text-neutral-200 border-gray-100 dark:border-neutral-600 focus:border-gray-200 focus:dark:border-neutral-500 dark:placeholder:text-neutral-400 outline-none w-full"
                           type="text" v-model.trim="clientCreateName" :placeholder="$t('name')" />
                       </p>
+                      <p class="text-sm text-gray-500">
+                        <input placeholder="delay" v-model.trim="delay" class="rounded p-2 border-2 dark:bg-neutral-700 dark:text-neutral-200 border-gray-100 dark:border-neutral-600 focus:border-gray-200 focus:dark:border-neutral-500 dark:placeholder:text-neutral-400 outline-none w-full"  type="text" v-model="delay" >
+                      </p>
+                      {{delay}}
                     </div>
                   </div>
                 </div>
               </div>
               <div class="bg-gray-50 dark:bg-neutral-700 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                <button v-if="clientCreateName.length" type="button" @click="createClient(); clientCreate = null"
+                <button v-if="clientCreateName.length" type="button" @click="createClient(delay); clientCreate = null"
                   class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-800 text-base font-medium text-white hover:bg-red-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm">
                   {{$t("create")}}
                 </button>

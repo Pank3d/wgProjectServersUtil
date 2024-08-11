@@ -98,7 +98,7 @@ class API {
       method: 'post',
       path: '/wireguard/client',
       body: { name },
-    });
+    }); 
   }
 
   async deleteClient({ clientId }) {

@@ -132,7 +132,8 @@ ${client.preSharedKey ? `PresharedKey = ${client.preSharedKey}\n` : ''
 
   async __syncConfig() {
     debug('Config syncing...');
-    await Util.exec('wg syncconf wg0 <(wg-quick strip wg0)');
+    await Util.exec(' wg-quick strip /etc/wireguard/wg0.conf > /etc/wireguard/wg0-stripped.conf');
+    await Util.exec(' wg syncconf wg0 /etc/wireguard/wg0-stripped.conf');
     debug('Config synced.');
   }
 
